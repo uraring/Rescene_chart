@@ -1,8 +1,8 @@
 name: Chart Scraper
 
 on:
-  push:
-    branches: [ "main" ]
+  schedule:
+    - cron: '5 * * * *'
   workflow_dispatch:
 
 jobs:
@@ -20,9 +20,9 @@ jobs:
           python-version: '3.10'
 
       - name: Install dependencies
-        uses: py-actions/pip-install@v5
-        with:
-          packages: requests beautifulsoup4
+        run: |
+          python -m pip install --upgrade pip
+          pip install requests beautifulsoup4
 
       - name: Run collector
         run: python collector.py
