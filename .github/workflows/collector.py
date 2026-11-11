@@ -70,9 +70,7 @@ def main():
             history[art][cur_key] = slot_ranks
 
     with open(HISTORY_FILE, "w", encoding="utf-8") as f:
-        json.dumps(history, f, ensure_ascii=False, indent=2)
-        # Fix encoding write
-        f.write(json.dumps(history, ensure_ascii=False, indent=2))
+        json.dump(history, f, ensure_ascii=False, indent=2)
         
     print(f"Updated {cur_key} successfully.")
 
